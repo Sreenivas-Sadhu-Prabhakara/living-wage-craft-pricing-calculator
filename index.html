@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'">
+<title>Living-wage craft pricing calculator for artisans · Open MSME</title>
+<meta name="description" content="Cost a batch of handmade work including your own hours, see the hourly wage you are really paying yourself against your own state or regional minimum-wage figure, and get wholesale, retail and export prices that pay for your time.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Living-wage craft pricing calculator for artisans">
+<meta property="og:description" content="See the hourly wage you are really paying yourself on a batch of handmade work, and the prices that would pay you properly.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/accent.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="dot"></span>
+      <b>Open MSME</b>
+      <span class="tag">craft pricing</span>
+    </a>
+    <span class="sp"></span>
+    <a class="home" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a>
+    <button class="themer" data-themer type="button">Theme</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Handicrafts &amp; artisans · India &amp; Philippines</div>
+      <h1>Living-wage craft pricing calculator for artisans</h1>
+      <p class="lede">Costs a batch of handmade work with your own hours counted, shows the hourly wage you are actually paying yourself, and sets wholesale, retail and export prices that pay for your time.</p>
+      <div class="who">
+        <span class="pill">Artisans, SHG leaders, craft founders</span>
+        <span class="pill reg">Minimum-wage notifications · IN state boards, PH DOLE</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="cols calc">
+
+      <section class="card">
+        <h2>Inputs</h2>
+
+        <div class="field">
+          <label>Currency</label>
+          <div class="seg" role="group" aria-label="Currency">
+            <button type="button" data-cur="INR" aria-pressed="true">₹ INR</button>
+            <button type="button" data-cur="PHP" aria-pressed="false">₱ PHP</button>
+          </div>
+        </div>
+
+        <h3>The batch</h3>
+
+        <div class="row2">
+          <div class="field">
+            <label for="batchQty">Pieces in this batch</label>
+            <div class="inp has-suf">
+              <input type="number" id="batchQty" value="12" min="0" step="any" inputmode="decimal">
+              <span class="suf">pcs</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="materialsCost">Materials for the whole batch</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="materialsCost" value="1800" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="wastagePct">Wastage on materials <span class="hint">offcuts, spoiled dye</span></label>
+            <div class="inp has-suf">
+              <input type="number" id="wastagePct" value="8" min="0" step="any" inputmode="decimal">
+              <span class="suf">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="secondsPct">Seconds you cannot sell <span class="hint">breakage, failed firing</span></label>
+            <div class="inp has-suf">
+              <input type="number" id="secondsPct" value="5" min="0" max="100" step="any" inputmode="decimal">
+              <span class="suf">%</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Your own hours</h3>
+
+        <div class="row2">
+          <div class="field">
+            <label for="hoursMaking">Hours making this batch</label>
+            <div class="inp has-suf">
+              <input type="number" id="hoursMaking" value="24" min="0" step="any" inputmode="decimal">
+              <span class="suf">h</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="hoursUnpaid">Unpaid hours <span class="hint">sourcing, packing, photos, replies</span></label>
+            <div class="inp has-suf">
+              <input type="number" id="hoursUnpaid" value="6" min="0" step="any" inputmode="decimal">
+              <span class="suf">h</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Your wage benchmark</h3>
+
+        <div class="row2">
+          <div class="field">
+            <label for="benchmarkDaily">Minimum or living wage per day <span class="hint">from your own notification</span></label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="benchmarkDaily" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+          <div class="field">
+            <label for="benchmarkHoursPerDay">Hours in a working day</label>
+            <div class="inp has-suf">
+              <input type="number" id="benchmarkHoursPerDay" min="0" step="any" inputmode="decimal">
+              <span class="suf">h</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="targetWage">Hourly wage you intend to pay yourself <span class="hint" id="bm-hint">&nbsp;</span></label>
+          <div class="inp has-pre has-suf">
+            <span class="pre">₹</span>
+            <input type="number" id="targetWage" min="0" step="any" inputmode="decimal">
+            <span class="suf">/h</span>
+          </div>
+        </div>
+
+        <div class="note">The daily wage is pre-filled with an indicative placeholder only. Statutory minimum wages differ by state or region and by skill category, and are revised regularly — type in the figure from your own current notification.</div>
+
+        <h3>Money you pay out</h3>
+
+        <div class="row2">
+          <div class="field">
+            <label for="hiredLabour">Paid to helpers or job-work</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="hiredLabour" value="0" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+          <div class="field">
+            <label for="overheadMonth">Overhead a month <span class="hint">rent, power, tools, travel</span></label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="overheadMonth" value="4000" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="batchesPerMonth">Batches like this you make in a month</label>
+          <div class="inp has-suf">
+            <input type="number" id="batchesPerMonth" value="4" min="0" step="any" inputmode="decimal">
+            <span class="suf">/ mo</span>
+          </div>
+        </div>
+
+        <h3>What you charge today</h3>
+
+        <div class="field">
+          <label for="currentPrice">Your selling price for one piece, now</label>
+          <div class="inp has-pre">
+            <span class="pre">₹</span>
+            <input type="number" id="currentPrice" value="350" min="0" step="any" inputmode="decimal">
+          </div>
+        </div>
+
+        <h3>Margin and bands</h3>
+
+        <div class="row2">
+          <div class="field">
+            <label for="marginPct">Margin on full cost</label>
+            <div class="inp has-suf">
+              <input type="number" id="marginPct" min="-100" step="any" inputmode="decimal">
+              <span class="suf">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="retailMarkupPct">Retail markup over wholesale</label>
+            <div class="inp has-suf">
+              <input type="number" id="retailMarkupPct" min="0" step="any" inputmode="decimal">
+              <span class="suf">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="exportUpliftPct">Export uplift over wholesale <span class="hint">papers, forwarding, currency</span></label>
+          <div class="inp has-suf">
+            <input type="number" id="exportUpliftPct" min="0" step="any" inputmode="decimal">
+            <span class="suf">%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card sticky">
+        <h2>Result</h2>
+
+        <div class="result-primary">
+          <div class="k">The wage you are really paying yourself, per hour</div>
+          <div class="v" id="out-rate">—</div>
+          <div class="sub" id="out-sub">—</div>
+        </div>
+
+        <p>
+          <span class="pill reg" id="out-pill">—</span>
+          <span class="pill" id="out-days">—</span>
+        </p>
+
+        <div class="note" id="out-verdict">Enter your batch, your hours and the price you charge today.</div>
+
+        <h3>This batch</h3>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Materials</td><td class="num" id="r-materials">—</td></tr>
+            <tr><td id="r-wastage-label">+ Wastage</td><td class="num" id="r-wastage">—</td></tr>
+            <tr><td>Paid to helpers or job-work</td><td class="num" id="r-hired">—</td></tr>
+            <tr><td id="r-overhead-label">Overhead share</td><td class="num" id="r-overhead">—</td></tr>
+            <tr class="sub"><td>Cash you paid out, your time not counted</td><td class="num" id="r-cash">—</td></tr>
+            <tr><td id="r-revenue-label">Revenue at your price today</td><td class="num" id="r-revenue">—</td></tr>
+            <tr class="sub"><td id="r-hours-label">Your own hours in this batch</td><td class="num" id="r-hours">—</td></tr>
+            <tr class="total"><td>Left over to pay you for those hours</td><td class="num" id="r-left">—</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Per piece you can sell</h3>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Your price today</td><td class="num" id="u-price">—</td></tr>
+            <tr><td>Cash cost, your time not counted</td><td class="num" id="u-cash">—</td></tr>
+            <tr><td id="u-full-label">Full cost with your time paid</td><td class="num" id="u-full">—</td></tr>
+            <tr class="total"><td>Gap on every piece you sell</td><td class="num" id="u-gap">—</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Prices that pay for your time</h3>
+        <table class="breakdown">
+          <thead>
+            <tr><th>Price band</th><th class="num">Per piece</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Floor — pays the benchmark wage, no margin</td><td class="num" id="b-bench">—</td></tr>
+            <tr><td id="b-whole-label">Wholesale — full cost plus margin</td><td class="num" id="b-whole">—</td></tr>
+            <tr><td id="b-export-label">Export — wholesale plus uplift</td><td class="num" id="b-export">—</td></tr>
+            <tr class="total"><td id="b-retail-label">Retail or direct — wholesale plus markup</td><td class="num" id="b-retail">—</td></tr>
+          </tbody>
+        </table>
+
+        <div class="btnrow">
+          <button class="btn ghost" id="print" type="button">Print / Save PDF</button>
+          <button class="btn ghost" id="reset" type="button">Reset</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="prose">
+      <h2>How it works</h2>
+      <p>Most craft pricing starts from materials and stops there. This one starts from your hours. Materials for the whole batch are grossed up by wastage, because offcuts and spoiled dye are material you paid for and cannot sell. Money you actually handed to helpers or job-workers is added as it stands. Your monthly overhead — rent, power, tools, packing, travel to the market — is divided by the number of batches you make in a month, so each batch carries its share. Those three together are the cash that left your hands. Your own time is deliberately kept out of that figure.</p>
+      <p>Seconds are taken off the piece count, not off the materials: you bought clay or thread for the whole batch, so the cost of the batch has to be carried by the pieces you can actually sell. Making hours and unpaid hours are added together — sourcing, packing, photographs, answering buyers and keeping accounts are work, and leaving them out is the most common reason a maker's price is too low.</p>
+      <p>The headline number is then simple arithmetic: take the revenue your current price would earn on the saleable pieces, subtract the cash you paid out, and divide what is left by your own hours. That is the hourly wage you are paying yourself, whatever your margin says. It is compared with the benchmark you entered — a daily minimum or living wage divided by the hours in your working day — and if it falls short, the page says so and shows how much more each piece has to carry.</p>
+      <p>In short: <code>cash out = materials × (1 + wastage%) + helpers + overhead ÷ batches</code>, <code>saleable = pieces × (1 − seconds%)</code>, <code>your hourly rate = (price × saleable − cash out) ÷ (making hours + unpaid hours)</code>. The price bands run the other way: <code>full cost = (cash out + hours × your target wage) ÷ saleable</code>, then <code>wholesale = full cost × (1 + margin%)</code>, with retail and export as a markup and an uplift on wholesale.</p>
+
+      <details class="assumptions">
+        <summary>Assumptions &amp; rates</summary>
+        <ul>
+          <li>Wastage grosses up materials only. It never touches helpers, job-work or overhead.</li>
+          <li>Seconds reduce the saleable pieces, not the materials, so the whole batch cost is carried by what you can sell. Seconds are treated as unsellable, not as discounted B-grade stock.</li>
+          <li>Monthly overhead is divided by the batches you make in a month. If either figure is blank, no overhead is allocated rather than dividing by zero.</li>
+          <li>Making hours and unpaid hours are added together and costed at the hourly wage you set for yourself.</li>
+          <li>Benchmark hourly wage = daily wage ÷ hours in a working day. Both are yours to enter; minimum wages in India and the Philippines are published as daily figures.</li>
+          <li>Indicative placeholder figures only, shown until you type your own: <span id="ref-inr">—</span>; <span id="ref-php">—</span>. These are round numbers for illustration, not current, authoritative or region-specific rates.</li>
+          <li>Starting conventions, all editable: margin <span id="ref-margin">—</span> on full cost; retail at <span id="ref-retail">—</span> over wholesale, the long-standing craft practice that stops a maker undercutting the shops that stock them; export uplift <span id="ref-export">—</span> over wholesale as a buffer for documentation, forwarding and currency movement.</li>
+          <li>A margin below −100% is clamped to −100%, so a price never goes negative. Negative entries for money, hours and piece counts are read as zero.</li>
+          <li>GST, VAT, income tax, marketplace commission, payment charges and shipping to the buyer are not included. Add them on top of the band you choose.</li>
+        </ul>
+      </details>
+
+      <div class="note">An estimate to price with, not a wage determination or legal advice. The benchmark is only as good as the figure you type in: take it from your current State Government minimum-wage notification in India, or your regional Wage Order from the DOLE regional wages and productivity board in the Philippines, for the right scheduled employment and skill category. Nothing you enter leaves your device.</div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Open MSME · open-source tool for MSMEs in India &amp; the Philippines · MIT</span>
+    <span><a href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a></span>
+  </div>
+</footer>
+
+<script src="assets/ui.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/calc.js"></script>
+</body>
+</html>
